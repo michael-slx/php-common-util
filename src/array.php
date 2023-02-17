@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PhpCommon\Util;
 
+use InvalidArgumentException;
+
 /**
  * Get a value from a multi-level array using a path
  *
@@ -35,7 +37,8 @@ function array_get_by_path(array $subject, string $path, mixed $default = null):
  * Set a value in a multi-level array using a path
  *
  * This function navigates a multi-level tree of arrays using a given path and sets the given value to the referenced
- * node. If the given path does not reference an existing node, arrays will be created in place of the missing nodes.
+ * node. If the given path does not reference an existing node, arrays will be created in place of the missing nodes. If
+ * the path or a part of it references a non-array type, it is overwritten with an array.
  *
  * Path components are separated by a dot character (`.`).
  *
@@ -43,7 +46,20 @@ function array_get_by_path(array $subject, string $path, mixed $default = null):
  * @param string $path Path string
  * @param mixed|null $value Value to set
  * @return void
+ * @throws InvalidArgumentException if an empty path is provided
  */
 function array_set_by_path(array &$subject, string $path, mixed $value): void {
-    // TODO: Implement array_set_by_path function
+    if (empty($path)) {
+        throw new InvalidArgumentException("Path is empty");
+    }
+
+    $pathParts = explode('.', $path);
+    $node = &$subject;
+    foreach ($pathParts as $pathPart) {
+        if (!isset($node[$pathPart]) || !is_array($node[$pathPart]))
+            $node[$pathPart] = [];
+        $node = &$node[$pathPart];
+    }
+
+    $node = $value;
 }
