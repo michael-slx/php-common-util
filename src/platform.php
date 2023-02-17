@@ -9,5 +9,5 @@ namespace PhpCommon\Util;
  * @return bool `true` if PHP is running on Windows; `false` for other platforms
  */
 function platform_is_windows(): bool {
-    // TODO: Implement platform_is_windows function
+    return PHP_OS_FAMILY === 'Windows';
 }
