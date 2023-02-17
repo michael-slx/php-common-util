@@ -17,7 +17,18 @@ namespace PhpCommon\Util;
  * @return mixed|null Referenced value if it exists; `$default` otherwise
  */
 function array_get_by_path(array $subject, string $path, mixed $default = null): mixed {
-    // TODO: Implement array_get_by_path function
+    if (empty($path))
+        return $subject;
+
+    $pathParts = explode('.', $path);
+    $node = $subject;
+    foreach ($pathParts as $pathPart) {
+        if (!is_array($node))
+            return $default;
+        $node = $node[$pathPart] ?? $default;
+    }
+
+    return $node ?? $default;
 }
 
 /**
