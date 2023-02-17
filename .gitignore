@@ -1,0 +1,4 @@
+.idea/*
+!.idea/codeStyles
+vendor
+.phpunit.result.cache

@@ -1,0 +1,31 @@
+{
+    "name": "michael-slx/php-common-util",
+    "description": "Library with miscellaneous utilities and helpers",
+    "type": "library",
+    "license": "Apache-2.0",
+    "autoload": {
+        "files": [
+            "src/platform.php"
+        ],
+        "psr-4": {
+            "PhpCommon\\Util\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpCommon\\Tests\\Util\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael Schantl",
+            "email": "floss@schantl-lx.at"
+        }
+    ],
+    "require": {
+        "php": "~8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0.7"
+    }
+}
