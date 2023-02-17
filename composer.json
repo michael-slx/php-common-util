@@ -5,7 +5,8 @@
     "license": "Apache-2.0",
     "autoload": {
         "files": [
-            "src/platform.php"
+            "src/platform.php",
+            "src/array.php"
         ],
         "psr-4": {
             "PhpCommon\\Util\\": "src/"
