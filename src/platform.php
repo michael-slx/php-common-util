@@ -32,5 +32,6 @@ function platform_require_windows(): void {
  * @throws UnsupportedPlatformException if this script is running on Windows
  */
 function platform_require_not_windows(): void {
-    // TODO: Implement platform_require_not_windows function
+    if (platform_is_windows())
+        throw new UnsupportedPlatformException("This operation is only supported on platforms other than Windows");
 }
