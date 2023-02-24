@@ -24,3 +24,13 @@ function platform_require_windows(): void {
     if (!platform_is_windows())
         throw new UnsupportedPlatformException("This operation is only supported on Windows");
 }
+
+/**
+ * Require that this script is running on a platform other than Windows
+ *
+ * @return void if this script is running on a platform other than Windows
+ * @throws UnsupportedPlatformException if this script is running on Windows
+ */
+function platform_require_not_windows(): void {
+    // TODO: Implement platform_require_not_windows function
+}
